@@ -7,6 +7,7 @@ RUN apk add --update-cache --allow-untrusted \
         autoconf g++ make \
         && pecl install xdebug-2.5.5 \
         && docker-php-ext-enable xdebug \
+        && apk del .build-deps \
         && rm -rf /tmp/* /tmp/.htaccess /var/cache/apk/*
 WORKDIR /app
 CMD ["composer"]
